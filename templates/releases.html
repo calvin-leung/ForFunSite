@@ -1,0 +1,33 @@
+{% for game in data %}
+
+	<div class="container">
+		<div class="panel panel-default"><div class="panel-body">
+			<h4>
+				<small>{{ game['release_date'] }}</small><br>
+				{{ game['name'] }}
+			</h4>
+
+			{% for genre in game['genres_human'] %}
+				<span class="label label-default">{{ genre }}</span>
+			{% endfor %}
+
+			{% for theme in game['themes_human'] %}
+				<span class="label label-default">{{ theme }}</span>
+			{% endfor %}
+
+			{% if game['genres_human']|length != 0 or game['themes_human']|length != 0 %}
+				<br><br>
+			{% endif %}
+			
+			{% if 'summary' in game %}
+				<div class="well">{{ game['summary'] }}</div>
+			{% endif %}
+			
+			{% for ss_url in game['ss_urls'] %}
+				<img src="{{ ss_url }}" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+			{% endfor %}
+			
+		</div></div>
+	</div>
+
+{% endfor %}
